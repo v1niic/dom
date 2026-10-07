@@ -88,8 +88,10 @@ function renderizarTarefas() {
         );
         botaoEditar.addEventListener(
             "click",
-            function () {}
-        )
+            function () {
+                editarTarefa(tarefa.id);
+            }
+        );
 
         const botaoExcluir = document.createElement("button");
         botaoExcluir.textContent = "Excluir";
@@ -101,7 +103,9 @@ function renderizarTarefas() {
         );
         botaoExcluir.addEventListener(
             "click",
-            function () {}
+            function () {
+                excluirTarefa(tarefa.id);
+            }
         );
 
         colunaAcoes.appendChild(botaoConcluir);
@@ -142,6 +146,30 @@ function atualizarContador() {
     } else {
         contador.textContent = `${quantidade} Tarefas`;
     }
+}
+
+function editarTarefa(id) {
+    const tarefa = tarefas.find(function (tarefa) {
+        return tarefa.id === id;
+});
+if (!tarefa) {
+    return;
+}
+const novoTexto = prompt("Digite o novo nome da tarefa:", tarefa.texto);
+if (novoTexto === "") {
+    alert("A tarefa não pode ficar em branco.");
+    return;
+}
+tarefa.texto = novoTexto;
+salvarTarefa();
+renderizarTarefas();
+}
+
+
+function excluirTarefa(id) {
+    tarefas = tarefas.filter(function (tarefa) {
+        return tarefa.id !== id;
+    });
 }
 
 renderizarTarefas();
