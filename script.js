@@ -167,11 +167,15 @@ renderizarTarefas();
 
 
 function excluirTarefa(id) {
+  const confirmar = confirm("Tem certeza que deseja excluir esta tarefa?");
+    if (!confirmar) {
+        return;
+    }
     tarefas = tarefas.filter(function (tarefa) {
         return tarefa.id !== id;
     });
+
+    salvarTarefa();
+    renderizarTarefas();
 }
-
-renderizarTarefas();
-
 
