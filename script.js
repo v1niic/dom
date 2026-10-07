@@ -58,6 +58,7 @@ function renderizarTarefas() {
         }
 
         const colunaAcoes = document.createElement("td");
+        colunaAcoes.classList.add("text-center");
 
         const botaoConcluir = document.createElement("button");
         botaoConcluir.textContent =
@@ -78,10 +79,35 @@ function renderizarTarefas() {
         });
 
         const botaoEditar = document.createElement("button");
+        botaoEditar.textContent = "Editar";
+        botaoEditar.classList.add(
+            "btn",
+            "btn-primary",
+            "btn-sm",
+            "me-2"
+        );
+        botaoEditar.addEventListener(
+            "click",
+            function () {}
+        )
+
         const botaoExcluir = document.createElement("button");
+        botaoExcluir.textContent = "Excluir";
+        botaoExcluir.classList.add(
+            "btn",
+            "btn-danger",
+            "btn-sm",
+            "me-2"
+        );
+        botaoExcluir.addEventListener(
+            "click",
+            function () {}
+        );
 
         colunaAcoes.appendChild(botaoConcluir);
-    
+        colunaAcoes.appendChild(botaoEditar);
+        colunaAcoes.appendChild(botaoExcluir);
+
         linha.appendChild(colunaNumero);
         linha.appendChild(colunaStatus);
         linha.appendChild(colunaNome);
@@ -108,4 +134,16 @@ function alterarStatus(id) {
     salvarTarefa();
     renderizarTarefas();
 }
+
+function atualizarContador() {
+    const quantidade = tarefas.length;
+    if (quantidade === 1) {
+        contador.textContent = "1 Tarefa";
+    } else {
+        contador.textContent = `${quantidade} Tarefas`;
+    }
+}
+
 renderizarTarefas();
+
+
