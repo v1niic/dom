@@ -5,7 +5,7 @@ const contador = document.querySelector("#contador");
 const listaTarefas = document.querySelector("#lista-tarefas"); 
 
 // Resgate de tarefas do localStorage
-const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
 
 // Ouvir e agir sobre o clique 
 form.addEventListener("submit", adicionarTarefa);
